@@ -27,9 +27,24 @@ public class JournalEntryController {
     }
 
     @GetMapping("id/{myId}")
-    public JournalEntry getJournalEntryById(@PathVariable Long myId)
-    {return journalEntries.get(myId);
+    public JournalEntry getJournalEntryById(@PathVariable Long myId) {
+        return journalEntries.get(myId);
     }
+
+    //this could have also been done by GetMapping but then the naming that we write
+    //to acces this in url /journal/id/2 will be same so we have changes that here
+    @DeleteMapping("id/{myId}")
+    public JournalEntry deleteJournalEntryById(@PathVariable Long myId) {
+        return journalEntries.remove(myId);
+    }
+
+    @PutMapping("id/{id}")
+    public JournalEntry deleteJournalEntryById(@PathVariable Long id,@RequestBody JournalEntry myEntry) {
+        return journalEntries.put(id,myEntry);
+    }
+
+
+
 }
 
 //methpd inside controller should be public so that it can be accessed by external HTTP
