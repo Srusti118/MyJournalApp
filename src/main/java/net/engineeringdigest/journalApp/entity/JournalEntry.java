@@ -2,7 +2,7 @@ package net.engineeringdigest.journalApp.entity;
 
 //plain old java object (POJ0)
 public class JournalEntry {
-    private long id;
+    private Long id;
     private String title;
     private String content;
 
