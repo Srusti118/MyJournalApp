@@ -10,36 +10,35 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/journal") //class par mapping add karse , localhost:8080/journal then agad join karse je method ma hase e
-public class JournalEntryController {
+public class JournalEntryControllerV2 {
 
-    private Map<Long,JournalEntry> journalEntries = new HashMap<>();
 
     @GetMapping
     public List<JournalEntry> getAll(){
-        return new ArrayList<>(journalEntries.values());
+        return null;
     }
 
     @PostMapping
     public boolean createEntry(@RequestBody JournalEntry myEntry){
-        journalEntries.put(myEntry.getId(),myEntry);
+
         return true;
     }
 
     @GetMapping("id/{myId}")
     public JournalEntry getJournalEntryById(@PathVariable Long myId) {
-        return journalEntries.get(myId);
+        return null;
     }
 
     //this could have also been done by GetMapping but then the naming that we write
     //to access this in url /journal/id/2 will be same so we have changes that here
     @DeleteMapping("id/{myId}")
     public JournalEntry deleteJournalEntryById(@PathVariable Long myId) {
-        return journalEntries.remove(myId);
+        return null;
     }
 
     @PutMapping("id/{id}")
     public JournalEntry deleteJournalEntryById(@PathVariable Long id,@RequestBody JournalEntry myEntry) {
-        return journalEntries.put(id,myEntry);
+        return null;
     }
 }
 
