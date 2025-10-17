@@ -1,26 +1,29 @@
 package net.engineeringdigest.journalApp.controller;
 
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import net.engineeringdigest.journalApp.entity.JournalEntry;
+import net.engineeringdigest.journalApp.service.JournalEntryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
-@RequestMapping("/journal") //class par mapping add karse , localhost:8080/journal then agad join karse je method ma hase e
+@RequestMapping("/journal")
+
 public class JournalEntryControllerV2 {
 
+    @Autowired
+    private JournalEntryService journalEntryService;
 
     @GetMapping
-    public List<JournalEntry> getAll(){
+    public List<JournalEntry> getAll() {
         return null;
     }
 
     @PostMapping
-    public boolean createEntry(@RequestBody JournalEntry myEntry){
-
+    public boolean createEntry(@RequestBody JournalEntry myEntry) {
+        journalEntryService.saveEntry(myEntry);
         return true;
     }
 
@@ -29,17 +32,27 @@ public class JournalEntryControllerV2 {
         return null;
     }
 
-    //this could have also been done by GetMapping but then the naming that we write
-    //to access this in url /journal/id/2 will be same so we have changes that here
+
     @DeleteMapping("id/{myId}")
     public JournalEntry deleteJournalEntryById(@PathVariable Long myId) {
         return null;
     }
 
     @PutMapping("id/{id}")
-    public JournalEntry deleteJournalEntryById(@PathVariable Long id,@RequestBody JournalEntry myEntry) {
+    public JournalEntry deleteJournalEntryById(@PathVariable Long id, @RequestBody JournalEntry myEntry) {
         return null;
     }
 }
 
+
+
+
 //method inside controller should be public so that it can be accessed by external HTTP
+
+//Delete ----> this could have also been done by GetMapping but then the naming that we write
+//to access this in url /journal/id/2 will be same so we have changes that here
+
+//@RequestMapping("/journal")--->class par mapping add karse , localhost:8080/journal then agad join karse je method ma hase e
+
+// @Autowired ---> as aaiya autowired therefore journalentryservice should be a component
+//    private JournalEntryService journalEntryService;

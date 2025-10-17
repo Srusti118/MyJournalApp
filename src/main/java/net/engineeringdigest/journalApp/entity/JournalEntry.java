@@ -1,16 +1,28 @@
 package net.engineeringdigest.journalApp.entity;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
+
 //plain old java object (POJ0)
+@Document(collection = "journal_entries") //will tell spring k mongodb collection se mapped entry row
 public class JournalEntry {
-    private Long id;
+
+    @Id //primary key
+    private String id;
+
     private String title;
+
     private String content;
 
-    public long getId() {
+    private Date date;
+
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -29,4 +41,16 @@ public class JournalEntry {
     public void setContent(String content) {
         this.content = content;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }
+
+
+//@Id --->primary key, agar nai apya to mongodb will add according to itself !
+// if apsu to will convert to string (only for those that can be autoconverted baki write inside ""
