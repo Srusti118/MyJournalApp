@@ -40,5 +40,5 @@ public class JournalEntryService {
 
 }
 
-//controller --> service --> repository
+//controller --> service --> repository    || Repository is just extending MongoRepository which has built in method
 //Optional means the data can be there or it cant be

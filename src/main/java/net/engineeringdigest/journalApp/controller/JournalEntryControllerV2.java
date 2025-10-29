@@ -72,4 +72,4 @@ public class JournalEntryControllerV2 {
 // @Autowired ---> as aaiya autowired therefore journalentryservice should be a component
 //    private JournalEntryService journalEntryService;
 
-//as finfById returns optional ---> orElse (null) will make sure something gets return
+//as findById returns optional ---> orElse (null) will make sure something gets return
